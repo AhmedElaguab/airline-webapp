@@ -6,4 +6,28 @@
 <!-- Content block -->
 {% block content %}
 <h1>Airline Webapp.</h1>
+<hr>
+{% if flights %}
+<h2 class="mb-4">Select a flight to book:</h2>
+<form action="" method="POST">
+  <div class="form-group">
+    <select class="form-control form-control-lg" name="flight_id">
+      {% for flight in flights %}
+      <option value="{{ flight.id }}">
+        {{ flight.format }}
+      </option>
+      {% endfor %}
+    </select>
+  </div>
+  <div class="form-group">
+    <input type="text" name="name" class="form-control form-control-lg" placeholder="Enter your name">
+  </div>
+  <div class="form-group">
+    <button class="btn btn-lg btn-block btn-primary">Book</button>
+  </div>
+</form>
+{% else %}
+<h2>No flights!!</h2>
+{% endif %}
+
 {% endblock %}

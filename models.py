@@ -10,6 +10,10 @@ class Flight(db.Model):
     destination = db.Column(db.String, nullable=False)
     duration = db.Column(db.Integer, nullable=False)
 
+    @property
+    def format(self):
+        return f"{self.origin} to {self.destination}, {self.duration} minutes."
+
     def print_info(self):
         print()
         print(f"Flight info #({self.id})")
