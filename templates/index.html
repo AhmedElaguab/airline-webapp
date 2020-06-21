@@ -1,12 +1,15 @@
 {% extends "base.html" %}
 
 <!-- Title block -->
-{% block title%} Home | Airline Webapp {% endblock %}
+{% block title%} Home | {% endblock %}
+
+<!-- Head block -->
+{% block head %}
+<h1>Airline Webapp | Home</h1>
+{% endblock %}
 
 <!-- Content block -->
 {% block content %}
-<h1>Airline Webapp | Home</h1>
-<hr>
 {% if flights %}
 <h2 class="mb-4">Select a flight to book:</h2>
 <form action="" method="POST">

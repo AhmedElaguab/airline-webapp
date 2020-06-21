@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>
-    {% block title %} Airline Webapp {% endblock %}
+    {% block title %}{% endblock %} Airline Webapp
   </title>
   <!-- css:bootstrap -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
@@ -14,9 +14,25 @@
 
 <body>
   <main class="main-content py-5">
-    <div class="container">
-      <div class="content">
-        {% block content %}{% endblock %}
+    <header>
+      <div class="container">
+        <div class="d-flex">
+          {% block head %}{% endblock %}
+          <nav class="d-flex flex-grow-1 justify-content-end">
+            <ul class="d-flex list-unstyled">
+              <li><a class="d-block ml-3" href="{{ url_for('index') }}">Home</a></li>
+              <li><a class="d-block ml-3" href="{{ url_for('flights') }}">Flights</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+      <hr>
+    </header>
+    <div>
+      <div class="container">
+        <div class="content">
+          {% block content %}{% endblock %}
+        </div>
       </div>
     </div>
   </main>
