@@ -20,3 +20,12 @@ def flights():
     """List all flights."""
     flights = Flight.query.all()
     return render_template("flights.html", flights=flights)
+
+
+@app.route("/flights/<int:flight_id>")
+def flight(flight_id):
+    """List details about single flight."""
+
+    # Check flight is exist
+    flight = Flight.query.filter_by(id=flight_id).first()
+    return render_template("flight.html", flight=flight)

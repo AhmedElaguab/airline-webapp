@@ -1,12 +1,10 @@
 {% extends "base.html" %}
 
 <!-- Title block -->
-{% block title%} Flights | Airline Webapp {% endblock %}
+{% block title%} Flights | {% endblock %}
 
 <!-- Head block -->
-{% block head %}
-<h1>Airline Webapp | Flights</h1>
-{% endblock %}
+{% block head %} <h1>Airline Webapp | Flights</h1> {% endblock %}
 
 <!-- Content block -->
 {% block content %}
@@ -14,7 +12,7 @@
 <h2 class="mb-4">Flights list:</h2>
 <ul>
   {% for flight in flights %}
-  <li>{{ flight.format }}</li>
+  <li><a href="{{ url_for('flight', flight_id=flight.id) }}">{{ flight.format }}</a></li>
   {% endfor %}
 </ul>
 {% else %}

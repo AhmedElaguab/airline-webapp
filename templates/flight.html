@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+<!-- Title block -->
+{% block title%} Flight | {% endblock %}
+
+<!-- Head block -->
+{% block head %} <h1>Airline Webapp | Flight</h1> {% endblock %}
+
+<!-- Content block -->
+{% block content %}
+{% if flight %}
+<h2 class="mb-4">Flight details:</h2>
+<ul>
+  <li>Origin: {{ flight.origin }}</li>
+  <li>Destination: {{ flight.destination }}</li>
+  <li>Duration: {{ flight.duration }}</li>
+</ul>
+{% else %}
+<h2 class="text-danger">No Such Flight!!</h2>
+{% endif %}
+
+{% endblock %}
