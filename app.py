@@ -28,4 +28,8 @@ def flight(flight_id):
 
     # Check flight is exist
     flight = Flight.query.filter_by(id=flight_id).first()
-    return render_template("flight.html", flight=flight)
+
+    # Get passengers list
+    passengers = Passenger.query.filter_by(flight_id=flight_id).all()
+
+    return render_template("flight.html", flight=flight, passengers=passengers)

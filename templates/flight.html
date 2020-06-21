@@ -13,8 +13,19 @@
 <ul>
   <li>Origin: {{ flight.origin }}</li>
   <li>Destination: {{ flight.destination }}</li>
-  <li>Duration: {{ flight.duration }}</li>
+  <li>Duration: {{ flight.duration }} minutes</li>
 </ul>
+
+<h3 class="mt-5 mb-4">Passengers list:</h3>
+{% if passengers %}
+<ul>
+  {% for passenger in passengers %}
+  <li>{{ passenger.name }}</li>
+  {% endfor %}
+</ul>
+{% else %}
+<p>This flight has no passengers!!</p>
+{% endif %}
 {% else %}
 <h2 class="text-danger">No Such Flight!!</h2>
 {% endif %}
