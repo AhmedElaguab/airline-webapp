@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+<!-- Title block -->
+{% block title%} Flights | Airline Webapp {% endblock %}
+
+<!-- Content block -->
+{% block content %}
+<h1>Airline Webapp | Flights</h1>
+<hr>
+{% if flights %}
+<h2 class="mb-4">Flights list:</h2>
+<ul>
+  {% for flight in flights %}
+  <li>{{ flight.format }}</li>
+  {% endfor %}
+</ul>
+{% else %}
+<h2>No flights!!</h2>
+{% endif %}
+
+{% endblock %}

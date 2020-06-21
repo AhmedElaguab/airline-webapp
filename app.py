@@ -13,3 +13,10 @@ def index():
     """List flights for booking."""
     flights = Flight.query.all()
     return render_template("index.html", flights=flights)
+
+
+@app.route("/flights")
+def flights():
+    """List all flights."""
+    flights = Flight.query.all()
+    return render_template("flights.html", flights=flights)
