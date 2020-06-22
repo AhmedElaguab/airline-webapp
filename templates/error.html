@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+<!-- Title block -->
+{% block title%} Error | {% endblock %}
+
+<!-- Head block -->
+{% block head %} <h1 class="text-danger">Airline Webapp | Error</h1> {% endblock %}
+
+<!-- Content block -->
+{% block content %}
+<h4 class="text-danger">{{ message }}</h4>
+{% endblock %}
