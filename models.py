@@ -10,6 +10,11 @@ class Flight(db.Model):
     destination = db.Column(db.String, nullable=False)
     duration = db.Column(db.Integer, nullable=False)
 
+    def add_passenger(self, name):
+        passenger = Passenger(name=name, flight_id=self.id)
+        db.session.add(passenger)
+        db.session.commit()
+
     @property
     def format(self):
         return f"{self.origin} to {self.destination}, {self.duration} minutes."
