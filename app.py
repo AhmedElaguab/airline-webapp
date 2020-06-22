@@ -26,7 +26,24 @@ def book():
     if name == None or len(name) < 3:
         return render_template("error.html", message="Name value must be more than 2 characters.")
 
-    return "book a flight"
+    # Get flight id value
+    try:
+        flight_id = int(request.form.get("flight_id"))
+    except ValueError:
+        return render_template("error.html", message="Invalid flight number.")
+
+    # Make sure the flight exists
+    flight = Flight.query.get(flight_id)
+
+    if flight is None:
+        return render_template("error.html", message="No such flight with that id.")
+
+    # Add passenger
+    passenger = Passenger(name=name, flight_id=flight_id)
+    db.session.add(passenger)
+    db.session.commit()
+
+    return render_template("success.html")
 
 
 @app.route("/flights")
