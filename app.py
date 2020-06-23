@@ -59,6 +59,6 @@ def flight(flight_id):
     flight = Flight.query.filter_by(id=flight_id).first()
 
     # Get passengers list
-    passengers = Passenger.query.filter_by(flight_id=flight_id).all()
+    passengers = flight.passengers
 
     return render_template("flight.html", flight=flight, passengers=passengers)
