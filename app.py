@@ -66,10 +66,33 @@ def flight(flight_id):
 
 @app.route("/api/flights")
 def api_flights():
+
+    # Get all flights
     flights = Flight.query.all()
     data = []
     for flight in flights:
-        print(id)
         data.append({"id": flight.id, "origin": flight.origin,
                      "destination": flight.destination, "duration": flight.duration})
+
+    # Return data
     return jsonify({"flights": data})
+
+
+@app.route("/api/flights/<int:flight_id>")
+def api_flight(flight_id):
+
+    # Get flight by id
+    flight = Flight.query.get(flight_id)
+
+    # Make sure that flight exists
+    if flight is None:
+        return jsonify({"error": "Invalid flight_id."}), 422
+
+    # Get passengers list by flight
+    passengers = flight.passengers
+    passengers_list = []
+    for passenger in passengers:
+        passengers_list.append({"name": passenger.name, "id": passenger.id})
+
+    # Return data
+    return jsonify({"id": flight.id, "origin": flight.origin, "destination": flight.destination, "duration": flight.duration, "passengers": passengers_list})
