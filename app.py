@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 from models import *
 
 app = Flask(__name__)
@@ -62,3 +62,14 @@ def flight(flight_id):
     passengers = flight.passengers
 
     return render_template("flight.html", flight=flight, passengers=passengers)
+
+
+@app.route("/api/flights")
+def api_flights():
+    flights = Flight.query.all()
+    data = []
+    for flight in flights:
+        print(id)
+        data.append({"id": flight.id, "origin": flight.origin,
+                     "destination": flight.destination, "duration": flight.duration})
+    return jsonify({"flights": data})
